@@ -1,0 +1,25 @@
+# action.yaml
+name: 'Terraform Cloud Trigger'
+description: 'Call the terraform cloud api to start plans and applies'
+inputs:
+  workspace_id:
+    description: 'name of your workspace'
+    required: true
+  org_id:
+    description: 'name of your organization'
+    required: true
+  TFE_TOKEN:
+    description: 'a terraform cloud token for api authorization'
+    required: true
+  auto_apply:
+    description: 'determines whether to autoamtically apply the plan, defaults to false'
+    required: false
+    default: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.TFE_TOKEN }}
+    - ${{ inputs.workspace_id }}
+    - ${{ inputs.org_id }}
+    - ${{ inputs.auto_apply }}
