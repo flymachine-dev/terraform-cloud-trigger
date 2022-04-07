@@ -6,6 +6,8 @@ jobs:
   trigger-tf-cloud:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Trigger TF Cloud Runs
         id: tag
         uses: hklauke/terraform-cloud-trigger@main
