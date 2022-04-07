@@ -35,15 +35,15 @@ def main():
     tf_payload = {"data": {
         "attributes": {
           "message": "Terraform Plan via Api",
-          "auto-apply": {auto_apply_bool},
-          "target-addrs": {resource_target}
+          "auto-apply": "%s" % auto_apply_bool,
+          "target-addrs": "%s" % resource_target
         },
         "type": "runs",
         "relationships": {
           "workspace": {
             "data": {
               "type": "workspaces",
-              "id": {workspace_id}
+              "id": "%s" % workspace_id
             }
           }
         }
