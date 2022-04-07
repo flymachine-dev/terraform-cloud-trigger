@@ -35,8 +35,7 @@ def main():
     tf_payload = {"data": {
         "attributes": {
           "message": "Terraform Plan via Api",
-          "auto-apply": "%s" % auto_apply_bool,
-          "target-addrs": "%s" % resource_target
+          "auto-apply": "%s" % auto_apply_bool
         },
         "type": "runs",
         "relationships": {
@@ -70,9 +69,11 @@ def main():
                 err = "Terraform Run Failed"
                 raise SystemExit(err)
             elif run_status == "applied":
+                print(run_status)
                 run_finished = True
         elif auto_apply_bool == "false":
             if run_status == "planned_and_finished" or run_status == "planned":
+                print(run_status)
                 run_finished = True
 
         if run_status == "discarded":
