@@ -10,9 +10,10 @@ jobs:
     steps:
       - name: Trigger TF Cloud Runs
         id: tag
-        uses: hklauke/terraform-cloud-trigger@main
-        env:
+        uses: hklauke/terraform-cloud-trigger:main
+        with:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
-          auto_apply: false
-          worksapce_id: fm-terraform-infra-dev
-          org_id: flymachine
+          type: plan
+          workspace: fm-terraform-infra-dev
+          org: flymachine
+
