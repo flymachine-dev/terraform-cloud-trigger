@@ -9,7 +9,7 @@ def main():
     workspace_name = os.environ['INPUT_WORKSPACE']
     TFE_TOKEN = os.environ['INPUT_TFE_TOKEN']
     run_type = os.environ['INPUT_TYPE']
-    resource_target = os.environ['INPUT_TARGET']
+    resource_target = os.environ['INPUT_RESOURCE_TARGET']
 
     tf_url = "https://app.terraform.io/api/v2/organizations/%s/workspaces/%s" % (org_name, workspace_name)
     headers = {"Content-Type": "application/vnd.api+json", "Authorization": "Bearer %s" % TFE_TOKEN}
