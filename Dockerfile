@@ -1,6 +1,6 @@
 # Base image
 FROM python:3.8-slim
-
+WORKDIR /
 # installes required packages for our script
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
