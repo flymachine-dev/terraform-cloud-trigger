@@ -8,4 +8,4 @@ RUN pip install -r /requirements.txt
 COPY entrypoint.py /entrypoint.py
 
 # file to execute when the docker container starts up
-ENTRYPOINT ["python", "entrypoint.py"]
+ENTRYPOINT ["python", "/entrypoint.py"]

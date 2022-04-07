@@ -12,7 +12,7 @@ inputs:
     description: 'a terraform cloud token for api authorization'
     required: true
   auto_apply:
-    description: 'determines whether to autoamtically apply the plan, defaults to false'
+    description: 'determines whether to automatically apply the plan, defaults to false'
     required: false
     default: false
 runs:
