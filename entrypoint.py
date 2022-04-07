@@ -59,28 +59,31 @@ def main():
 
     response = json.loads(r_post.text)
     run_id = response["data"]["id"]
+    run_id_url = "https://app.terraform.io/app/%s/workspaces/%s/runs/%s" % (org_name,workspace_name,run_id)
+    print('Run has started, you can follow along here %s' % run_id_url)
+
     run_finished = False
-    while not run_finished:
-        r_run = requests.get("https://app.terraform.io/api/v2/runs/%s" % run_id, headers=headers)
-        response = json.loads(r_run.text)
-        run_status = response["data"]["attributes"]["status"]
-        if auto_apply_bool == "true":
-            if run_status == "errored":
-                err = "Terraform Run Failed"
-                raise SystemExit(err)
-            elif run_status == "applied":
-                print(run_status)
-                run_finished = True
-        elif auto_apply_bool == "false":
-            if run_status == "planned_and_finished" or run_status == "planned":
-                print(run_status)
-                run_finished = True
-
-        if run_status == "discarded":
-            print("run has been discarded")
-            exit()
-
-        time.sleep(60)
+    # while not run_finished:
+    #     r_run = requests.get("https://app.terraform.io/api/v2/runs/%s" % run_id, headers=headers)
+    #     response = json.loads(r_run.text)
+    #     run_status = response["data"]["attributes"]["status"]
+    #     if auto_apply_bool == "true":
+    #         if run_status == "errored":
+    #             err = "Terraform Run Failed"
+    #             raise SystemExit(err)
+    #         elif run_status == "applied":
+    #             print(run_status)
+    #             run_finished = True
+    #     elif auto_apply_bool == "false":
+    #         if run_status == "planned_and_finished" or run_status == "planned":
+    #             print(run_status)
+    #             run_finished = True
+    #
+    #     if run_status == "discarded":
+    #         print("run has been discarded")
+    #         exit()
+    #
+    #     time.sleep(60)
 
     print("%s was successful!" % run_id)
 
