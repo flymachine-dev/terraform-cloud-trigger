@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Trigger TF Cloud Runs
         id: tag
-        uses: hklauke/terraform-cloud-trigger:main
+        uses: hklauke/terraform-cloud-trigger@main
         with:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
           type: plan
