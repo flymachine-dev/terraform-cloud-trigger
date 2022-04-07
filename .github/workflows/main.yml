@@ -1,8 +1,6 @@
 name: run terraform-cloud
 on:
-  push:
-    branches:
-      - dev
+  workflow_dispatch:
 
 jobs:
   trigger-tf-cloud:
