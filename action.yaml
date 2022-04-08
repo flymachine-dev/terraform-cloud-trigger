@@ -15,7 +15,7 @@ inputs:
     description: 'determines whether to automatically apply the plan, defaults to false'
     required: false
     default: false
-  resource_target:
+  target:
     description: 'targeting a specific resource'
     required: false
     default: ''
