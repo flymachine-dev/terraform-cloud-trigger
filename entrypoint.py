@@ -20,6 +20,7 @@ def main():
         response = json.loads(r.text)
         workspace_id = response["data"]["id"]
         print("Acquired workspace id")
+        last_config_version = response["data"]["relationships"]["current-configuration-version"]["data"]["id"]
 
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
@@ -44,6 +45,12 @@ def main():
               "type": "workspaces",
               "id": "%s" % workspace_id
             }
+          },
+          "configuration-version": {
+              "data": {
+                  "type": "configuration-versions",
+                  "id": "%s" % last_config_version
+              }
           }
         }
       }
