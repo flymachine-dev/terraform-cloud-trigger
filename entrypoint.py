@@ -10,6 +10,7 @@ def main():
     TFE_TOKEN = os.environ['INPUT_TFE_TOKEN']
     run_type = os.environ['INPUT_TYPE']
     resource_target = os.environ['INPUT_TARGET']
+    message = os.environ['INPUT_MESSAGE']
 
     tf_url = "https://app.terraform.io/api/v2/organizations/%s/workspaces/%s" % (org_name, workspace_name)
     headers = {"Content-Type": "application/vnd.api+json", "Authorization": "Bearer %s" % TFE_TOKEN}
@@ -32,10 +33,11 @@ def main():
     else:
         err = "options are only plan/apply"
         raise SystemExit(err)
+    
 
     tf_payload = {"data": {
         "attributes": {
-          "message": "Terraform Plan via Api",
+          "message": "%s" % message,
           "auto-apply": "%s" % auto_apply_bool,
           "target-addrs": "%s" % resource_target
         },

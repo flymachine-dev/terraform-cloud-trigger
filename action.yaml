@@ -19,6 +19,10 @@ inputs:
     description: 'targeting a specific resource'
     required: false
     default: ''
+  message:
+    description: 'message included with run'
+    required: false
+    default: 'Terraform Plan via terraform-cloud-trigger'
 runs:
   using: 'docker'
   image: 'Dockerfile'
